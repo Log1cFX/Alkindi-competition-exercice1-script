@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Project.dir/Src/inputs.c.obj.d"
   "CMakeFiles/Project.dir/Src/main.c.obj"
   "CMakeFiles/Project.dir/Src/main.c.obj.d"
+  "CMakeFiles/Project.dir/Src/screenshot.c.obj"
+  "CMakeFiles/Project.dir/Src/screenshot.c.obj.d"
   "Project.exe"
   "Project.exe.manifest"
   "Project.pdb"

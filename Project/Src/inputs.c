@@ -15,20 +15,23 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
         switch (kbStruct->vkCode)
         {
         case VK_LEFT:
-            printf("Left Arrow Pressed\n");
+            // printf("Left Arrow Pressed\n");
             cursor_moveLeft();
             break;
         case VK_RIGHT:
-            printf("Right Arrow Pressed\n");
+            // printf("Right Arrow Pressed\n");
             cursor_moveRight();
             break;
         case VK_UP:
-            printf("Up Arrow Pressed\n");
+            // printf("Up Arrow Pressed\n");
             cursor_moveUp();
             break;
         case VK_DOWN:
-            printf("Down Arrow Pressed\n");
+            // printf("Down Arrow Pressed\n");
             cursor_moveDown();
+            break;
+        case 'N' :
+            // cursor_leftDown();
             break;
         case 'F':
             for (int i = 0; i < 5; i++)

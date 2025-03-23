@@ -200,6 +200,30 @@ Src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Src/main.c.s
 .PHONY : Src/main.c.s
 
+Src/screenshot.obj: Src/screenshot.c.obj
+.PHONY : Src/screenshot.obj
+
+# target to build an object file
+Src/screenshot.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Src/screenshot.c.obj
+.PHONY : Src/screenshot.c.obj
+
+Src/screenshot.i: Src/screenshot.c.i
+.PHONY : Src/screenshot.i
+
+# target to preprocess a source file
+Src/screenshot.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Src/screenshot.c.i
+.PHONY : Src/screenshot.c.i
+
+Src/screenshot.s: Src/screenshot.c.s
+.PHONY : Src/screenshot.s
+
+# target to generate assembly for a file
+Src/screenshot.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Src/screenshot.c.s
+.PHONY : Src/screenshot.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -218,6 +242,9 @@ help:
 	@echo ... Src/main.obj
 	@echo ... Src/main.i
 	@echo ... Src/main.s
+	@echo ... Src/screenshot.obj
+	@echo ... Src/screenshot.i
+	@echo ... Src/screenshot.s
 .PHONY : help
 
 

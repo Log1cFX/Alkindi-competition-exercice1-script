@@ -1,0 +1,1 @@
+byte* screenshot_capture(POINT *positions[16]);

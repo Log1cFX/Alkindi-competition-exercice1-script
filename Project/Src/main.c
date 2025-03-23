@@ -1,7 +1,9 @@
 #include <stdio.h>
+#include <stdint.h>
 #include "inputs.h"
 #include "cursor.h"
-#include "screenshot.h"
+#include "screen.h"
+#include "puzzle.h"
 
 #define maxPosNumber 18
 POINT positions[maxPosNumber] = {0};
@@ -31,11 +33,6 @@ int main()
     HInputs hInputs = {0};
     inputs_INIT(&hInputs, stopFunction, cursor_getPos);
     inputs_startListening(&hInputs);
-    POINT *newPositions[16] = {0};
-    for (int i = 2; i < 18; i++)
-    {
-        newPositions[i-2] = &(positions[i]);
-    }
-    byte *bytes = screenshot_capture(newPositions);
-    printf("%d, %d", bytes[0], bytes[1]);
+    Sleep(1000);
+    puzzle_analyseImage(positions);
 }

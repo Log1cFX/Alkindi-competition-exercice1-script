@@ -9,6 +9,8 @@ void cursor_moveLeft();
 
 void cursor_moveRight();
 
+void cursor_setPos(POINT pos);
+
 void cursor_leftDown();
 
 void cursor_leftUp();

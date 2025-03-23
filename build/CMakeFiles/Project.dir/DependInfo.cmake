@@ -8,10 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/cursor.c" "CMakeFiles/Project.dir/src/cursor.c.obj" "gcc" "CMakeFiles/Project.dir/src/cursor.c.obj.d"
-  "C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/inputs.c" "CMakeFiles/Project.dir/src/inputs.c.obj" "gcc" "CMakeFiles/Project.dir/src/inputs.c.obj.d"
-  "C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/main.c" "CMakeFiles/Project.dir/src/main.c.obj" "gcc" "CMakeFiles/Project.dir/src/main.c.obj.d"
-  "C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/screenshot.c" "CMakeFiles/Project.dir/src/screenshot.c.obj" "gcc" "CMakeFiles/Project.dir/src/screenshot.c.obj.d"
+  "C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/cursor.c" "CMakeFiles/Project.dir/Src/cursor.c.obj" "gcc" "CMakeFiles/Project.dir/Src/cursor.c.obj.d"
+  "C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/inputs.c" "CMakeFiles/Project.dir/Src/inputs.c.obj" "gcc" "CMakeFiles/Project.dir/Src/inputs.c.obj.d"
+  "C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/main.c" "CMakeFiles/Project.dir/Src/main.c.obj" "gcc" "CMakeFiles/Project.dir/Src/main.c.obj.d"
+  "C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/puzzle.c" "CMakeFiles/Project.dir/Src/puzzle.c.obj" "gcc" "CMakeFiles/Project.dir/Src/puzzle.c.obj.d"
+  "C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/screen.c" "CMakeFiles/Project.dir/Src/screen.c.obj" "gcc" "CMakeFiles/Project.dir/Src/screen.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -40,6 +40,11 @@ void cursor_moveRight()
     }
 }
 
+void cursor_setPos(POINT pos)
+{
+    SetCursorPos(pos.x - 1, pos.y);
+}
+
 void cursor_leftDown()
 {
     INPUT input[1] = {0};

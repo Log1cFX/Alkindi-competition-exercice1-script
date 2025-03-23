@@ -1,8 +1,8 @@
 #include <windows.h>
 #include <stdint.h>
-#include "screenshot.h"
+#include "screen.h"
 
-static byte returnValue[2] = {0};
+static uint8_t returnValue[2] = {0};
 
 static COLORREF getPixelColor(HDC *hdcScreen, POINT *pos)
 {
@@ -24,7 +24,7 @@ static int isBlack(COLORREF color)
 }
 
 // REMEMBER TO COPY VALUES FROM THE ARRAY AND NOT USE THE POINTER
-byte* screenshot_capture(POINT *positions[16])
+uint8_t* screen_capturePixels(POINT *positions[16])
 {
     HDC hdcScreen = GetDC(NULL);
     for (int i = 0; i < 2; i++)

@@ -4,6 +4,7 @@
         "stdio.h": "c",
         "stdbool.h": "c",
         "windows.h": "c",
-        "cursor.h": "c"
+        "cursor.h": "c",
+        "puzzle.C": "cpp"
     }
 }

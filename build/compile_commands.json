@@ -19,8 +19,14 @@
 },
 {
   "directory": "C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/build",
-  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe  @CMakeFiles/Project.dir/includes_C.rsp -g -o CMakeFiles\\Project.dir\\Src\\screenshot.c.obj -c C:\\Users\\raffi\\Documents\\GitHub\\Alkindi-concours-qualification_exercice-n1\\Project\\Src\\screenshot.c",
-  "file": "C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/screenshot.c",
-  "output": "CMakeFiles/Project.dir/Src/screenshot.c.obj"
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe  @CMakeFiles/Project.dir/includes_C.rsp -g -o CMakeFiles\\Project.dir\\Src\\puzzle.c.obj -c C:\\Users\\raffi\\Documents\\GitHub\\Alkindi-concours-qualification_exercice-n1\\Project\\Src\\puzzle.c",
+  "file": "C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/puzzle.c",
+  "output": "CMakeFiles/Project.dir/Src/puzzle.c.obj"
+},
+{
+  "directory": "C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe  @CMakeFiles/Project.dir/includes_C.rsp -g -o CMakeFiles\\Project.dir\\Src\\screen.c.obj -c C:\\Users\\raffi\\Documents\\GitHub\\Alkindi-concours-qualification_exercice-n1\\Project\\Src\\screen.c",
+  "file": "C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/screen.c",
+  "output": "CMakeFiles/Project.dir/Src/screen.c.obj"
 }
 ]

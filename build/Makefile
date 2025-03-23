@@ -200,29 +200,53 @@ Src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Src/main.c.s
 .PHONY : Src/main.c.s
 
-Src/screenshot.obj: Src/screenshot.c.obj
-.PHONY : Src/screenshot.obj
+Src/puzzle.obj: Src/puzzle.c.obj
+.PHONY : Src/puzzle.obj
 
 # target to build an object file
-Src/screenshot.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Src/screenshot.c.obj
-.PHONY : Src/screenshot.c.obj
+Src/puzzle.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Src/puzzle.c.obj
+.PHONY : Src/puzzle.c.obj
 
-Src/screenshot.i: Src/screenshot.c.i
-.PHONY : Src/screenshot.i
+Src/puzzle.i: Src/puzzle.c.i
+.PHONY : Src/puzzle.i
 
 # target to preprocess a source file
-Src/screenshot.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Src/screenshot.c.i
-.PHONY : Src/screenshot.c.i
+Src/puzzle.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Src/puzzle.c.i
+.PHONY : Src/puzzle.c.i
 
-Src/screenshot.s: Src/screenshot.c.s
-.PHONY : Src/screenshot.s
+Src/puzzle.s: Src/puzzle.c.s
+.PHONY : Src/puzzle.s
 
 # target to generate assembly for a file
-Src/screenshot.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Src/screenshot.c.s
-.PHONY : Src/screenshot.c.s
+Src/puzzle.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Src/puzzle.c.s
+.PHONY : Src/puzzle.c.s
+
+Src/screen.obj: Src/screen.c.obj
+.PHONY : Src/screen.obj
+
+# target to build an object file
+Src/screen.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Src/screen.c.obj
+.PHONY : Src/screen.c.obj
+
+Src/screen.i: Src/screen.c.i
+.PHONY : Src/screen.i
+
+# target to preprocess a source file
+Src/screen.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Src/screen.c.i
+.PHONY : Src/screen.c.i
+
+Src/screen.s: Src/screen.c.s
+.PHONY : Src/screen.s
+
+# target to generate assembly for a file
+Src/screen.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Src/screen.c.s
+.PHONY : Src/screen.c.s
 
 # Help Target
 help:
@@ -242,9 +266,12 @@ help:
 	@echo ... Src/main.obj
 	@echo ... Src/main.i
 	@echo ... Src/main.s
-	@echo ... Src/screenshot.obj
-	@echo ... Src/screenshot.i
-	@echo ... Src/screenshot.s
+	@echo ... Src/puzzle.obj
+	@echo ... Src/puzzle.i
+	@echo ... Src/puzzle.s
+	@echo ... Src/screen.obj
+	@echo ... Src/screen.i
+	@echo ... Src/screen.s
 .PHONY : help
 
 

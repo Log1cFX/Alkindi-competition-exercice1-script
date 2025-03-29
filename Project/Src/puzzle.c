@@ -4,6 +4,17 @@
 #include "puzzle.h"
 #include "screen.h"
 
+#define BYTE_TO_BINARY_PATTERN "%c%c%c%c%c%c%c%c"
+#define BYTE_TO_BINARY(byte)         \
+    ((byte) & 0x80 ? '1' : '0'),     \
+        ((byte) & 0x40 ? '1' : '0'), \
+        ((byte) & 0x20 ? '1' : '0'), \
+        ((byte) & 0x10 ? '1' : '0'), \
+        ((byte) & 0x08 ? '1' : '0'), \
+        ((byte) & 0x04 ? '1' : '0'), \
+        ((byte) & 0x02 ? '1' : '0'), \
+        ((byte) & 0x01 ? '1' : '0')
+
 uint8_t originalImage[40000] = {0};
 uint8_t currentImage[40000] = {0};
 static int index = 0;
@@ -26,17 +37,15 @@ static void processPixel(POINT pos)
     }
     originalImage[index] = bytes[0];
     currentImage[index] = bytes[1];
-    printf("byte number %d: (%d ; %d)\n", index, bytes[0], bytes[1]);
     index++;
-    Sleep(1);
-
+    Sleep(10);
 }
 
 void puzzle_start(HInputs *inputsHandle, POINT positions[])
 {
     hInputs = inputsHandle;
     puzzle_analyseImage(positions);
-    // puzzle_printImages();
+    puzzle_printImages();
 }
 
 void puzzle_analyseImage(POINT positions[])
@@ -84,6 +93,6 @@ void puzzle_printImages()
 {
     for (int i = 0; i < 200; i++)
     {
-        printf("byte number %d: (%d ; %d)\n", i, currentImage[i], originalImage[i]);
+        printf("byte number %d: (" BYTE_TO_BINARY_PATTERN "," BYTE_TO_BINARY_PATTERN ")\n", i, BYTE_TO_BINARY(currentImage[i]), BYTE_TO_BINARY(originalImage[i]));
     }
 }

@@ -18,8 +18,6 @@ static int isBlack(COLORREF color)
     int green = GetGValue(color);
     int blue = GetBValue(color);
 
-    printf("%d,%d,%d\n", red, green, blue);
-
     // Compute brightness using the luminance formula
     double brightness = 0.299 * red + 0.587 * green + 0.114 * blue;
 
@@ -37,24 +35,19 @@ uint8_t *screen_capturePixels(POINT positions[16])
         for (int j = 0; j < 8; j++)
         {
             int pixelColor = isBlack(getPixelColor(&hdcScreen, &positions[(8 * i) + j]));
-            printf("%d", pixelColor);
             returnValue[i] = (returnValue[i] | (pixelColor << j));
         }
-        printf(" ");
     }
-    printf("\n");
     ReleaseDC(NULL, hdcScreen);
     return returnValue;
 }
 
 void screen_test(POINT positions[18])
 {
-    for (int i = 0; i < 18; i++)
+    for (int i = 2; i < 18; i++)
     {   
         HDC hdcScreen = GetDC(NULL);
-        // getPixelColor(&hdcScreen, &positions[i]);
-        isBlack(getPixelColor(&hdcScreen, &positions[i]));
-        // printf("%d", getPixelColor(&hdcScreen, &positions[i]));
+        printf("%d", isBlack(getPixelColor(&hdcScreen, &positions[i])));
         ReleaseDC(NULL, hdcScreen);
     }
 }

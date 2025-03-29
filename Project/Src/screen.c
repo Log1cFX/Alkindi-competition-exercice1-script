@@ -1,12 +1,14 @@
 #include <windows.h>
 #include <stdint.h>
 #include "screen.h"
+#include <stdio.h>
 
-static uint8_t returnValue[2] = {0};
+static int isBlack(COLORREF color);
 
 static COLORREF getPixelColor(HDC *hdcScreen, POINT *pos)
 {
-    return GetPixel(*hdcScreen, pos->x, pos->y);
+    // isBlack(GetPixel(*hdcScreen, (int)pos->x, (int)pos->y));
+    return GetPixel(*hdcScreen, (int)pos->x, (int)pos->y);
 }
 
 static int isBlack(COLORREF color)
@@ -16,25 +18,43 @@ static int isBlack(COLORREF color)
     int green = GetGValue(color);
     int blue = GetBValue(color);
 
+    printf("%d,%d,%d\n", red, green, blue);
+
     // Compute brightness using the luminance formula
     double brightness = 0.299 * red + 0.587 * green + 0.114 * blue;
 
     // Define threshold: colors with brightness less than 128 are considered close to black
-    return (brightness < 128.0);
+    return (brightness < 200.0);
 }
 
 // REMEMBER TO COPY VALUES FROM THE ARRAY AND NOT USE THE POINTER
-uint8_t* screen_capturePixels(POINT *positions[16])
+uint8_t *screen_capturePixels(POINT positions[16])
 {
     HDC hdcScreen = GetDC(NULL);
+    uint8_t *returnValue = malloc(2 * sizeof(uint8_t));
     for (int i = 0; i < 2; i++)
     {
         for (int j = 0; j < 8; j++)
         {
-            int pixelColor = isBlack(getPixelColor(&hdcScreen, positions[(8*i)+j]));
-            returnValue[i] = (returnValue[i]|(pixelColor<<j));
+            int pixelColor = isBlack(getPixelColor(&hdcScreen, &positions[(8 * i) + j]));
+            printf("%d", pixelColor);
+            returnValue[i] = (returnValue[i] | (pixelColor << j));
         }
+        printf(" ");
     }
+    printf("\n");
     ReleaseDC(NULL, hdcScreen);
     return returnValue;
+}
+
+void screen_test(POINT positions[18])
+{
+    for (int i = 0; i < 18; i++)
+    {   
+        HDC hdcScreen = GetDC(NULL);
+        // getPixelColor(&hdcScreen, &positions[i]);
+        isBlack(getPixelColor(&hdcScreen, &positions[i]));
+        // printf("%d", getPixelColor(&hdcScreen, &positions[i]));
+        ReleaseDC(NULL, hdcScreen);
+    }
 }

@@ -1,3 +1,6 @@
+#ifndef CURSOR
+#define CURSOR
+
 #include <windows.h>
 #include <stdio.h>
 
@@ -16,3 +19,5 @@ void cursor_leftDown();
 void cursor_leftUp();
 
 POINT *cursor_getPos();
+
+#endif

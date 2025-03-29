@@ -15,7 +15,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/addr2line.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/addr2line.exe"
 		},
 		{
 			"name" : "CMAKE_AR",
@@ -31,7 +31,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/ar.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/ar.exe"
 		},
 		{
 			"name" : "CMAKE_BUILD_TYPE",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "6"
+			"value" : "4"
 		},
 		{
 			"name" : "CMAKE_COLOR_MAKEFILE",
@@ -119,7 +119,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/msys64/mingw64/bin/cmake.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/cmake.exe"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -131,7 +131,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/msys64/mingw64/bin/cpack.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/cpack.exe"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -143,7 +143,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/msys64/mingw64/bin/ctest.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/ctest.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -155,7 +155,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/g++.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/g++.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER",
@@ -171,7 +171,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/gcc.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/gcc.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -187,7 +187,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/gcc-ar.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/gcc-ar.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_RANLIB",
@@ -203,7 +203,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/gcc-ranlib.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/gcc-ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS",
@@ -315,7 +315,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/dlltool.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/dlltool.exe"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -543,7 +543,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/ld.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/ld.exe"
 		},
 		{
 			"name" : "CMAKE_MAKE_PROGRAM",
@@ -559,7 +559,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/mingw32-make.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/mingw32-make.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -655,7 +655,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/nm.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/nm.exe"
 		},
 		{
 			"name" : "CMAKE_NUMBER_OF_MAKEFILES",
@@ -683,7 +683,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/objcopy.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/objcopy.exe"
 		},
 		{
 			"name" : "CMAKE_OBJDUMP",
@@ -699,7 +699,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/objdump.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/objdump.exe"
 		},
 		{
 			"name" : "CMAKE_PLATFORM_INFO_INITIALIZED",
@@ -763,7 +763,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/ranlib.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_RC_COMPILER",
@@ -779,7 +779,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/windres.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/windres.exe"
 		},
 		{
 			"name" : "CMAKE_RC_COMPILER_WORKS",
@@ -887,7 +887,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/readelf.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/readelf.exe"
 		},
 		{
 			"name" : "CMAKE_ROOT",
@@ -899,7 +899,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/msys64/mingw64/share/cmake"
+			"value" : "D:/Programes/msys64/mingw64/share/cmake"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1107,7 +1107,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/msys64/mingw64/bin/strip.exe"
+			"value" : "D:/Programes/msys64/mingw64/bin/strip.exe"
 		},
 		{
 			"name" : "CMAKE_TAPI",

@@ -52,7 +52,7 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
             break;
         }
     }
-    return CallNextHookEx(NULL, nCode, wParam, lParam);
+    // return CallNextHookEx(NULL, nCode, wParam, lParam);
 }
 
 int inputs_INIT(HInputs *hInputs, int (*stopFunction)(HInputs*, POINT*), POINT *(*customParamFunction)(void))

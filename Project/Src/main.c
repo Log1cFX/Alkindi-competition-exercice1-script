@@ -33,6 +33,13 @@ int main()
     HInputs hInputs = {0};
     inputs_INIT(&hInputs, stopFunction, cursor_getPos);
     inputs_startListening(&hInputs);
-    Sleep(1000);
-    puzzle_analyseImage(positions);
+    Sleep(2000);
+    screen_test(positions);
+    // puzzle_start(&hInputs, positions);
+    // POINT bitPixels[16] = {0};
+    // memcpy(bitPixels, &positions[2], 16 * sizeof(POINT));
+    // uint8_t bytes[2] = {0};
+    // uint8_t *bytes = screen_capturePixels(bitPixels);
+    // memcpy(bytes, screen_capturePixels(bitPixels), 2 * sizeof(uint8_t));
+    // printf("byte number %d: (%hhu ; %hhu)\n", 0, bytes[0], bytes[1]);
 }

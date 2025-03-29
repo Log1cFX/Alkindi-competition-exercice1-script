@@ -43,10 +43,10 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = C:\msys64\mingw64\bin\cmake.exe
+CMAKE_COMMAND = D:\Programes\msys64\mingw64\bin\cmake.exe
 
 # The command to remove a file.
-RM = C:\msys64\mingw64\bin\cmake.exe -E rm -f
+RM = D:\Programes\msys64\mingw64\bin\cmake.exe -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -76,75 +76,75 @@ CMakeFiles/Project.dir/Src/cursor.c.obj: CMakeFiles/Project.dir/includes_C.rsp
 CMakeFiles/Project.dir/Src/cursor.c.obj: C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/cursor.c
 CMakeFiles/Project.dir/Src/cursor.c.obj: CMakeFiles/Project.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Project.dir/Src/cursor.c.obj"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.dir/Src/cursor.c.obj -MF CMakeFiles\Project.dir\Src\cursor.c.obj.d -o CMakeFiles\Project.dir\Src\cursor.c.obj -c C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\cursor.c
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.dir/Src/cursor.c.obj -MF CMakeFiles\Project.dir\Src\cursor.c.obj.d -o CMakeFiles\Project.dir\Src\cursor.c.obj -c C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\cursor.c
 
 CMakeFiles/Project.dir/Src/cursor.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Project.dir/Src/cursor.c.i"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\cursor.c > CMakeFiles\Project.dir\Src\cursor.c.i
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\cursor.c > CMakeFiles\Project.dir\Src\cursor.c.i
 
 CMakeFiles/Project.dir/Src/cursor.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Project.dir/Src/cursor.c.s"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\cursor.c -o CMakeFiles\Project.dir\Src\cursor.c.s
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\cursor.c -o CMakeFiles\Project.dir\Src\cursor.c.s
 
 CMakeFiles/Project.dir/Src/inputs.c.obj: CMakeFiles/Project.dir/flags.make
 CMakeFiles/Project.dir/Src/inputs.c.obj: CMakeFiles/Project.dir/includes_C.rsp
 CMakeFiles/Project.dir/Src/inputs.c.obj: C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/inputs.c
 CMakeFiles/Project.dir/Src/inputs.c.obj: CMakeFiles/Project.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Project.dir/Src/inputs.c.obj"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.dir/Src/inputs.c.obj -MF CMakeFiles\Project.dir\Src\inputs.c.obj.d -o CMakeFiles\Project.dir\Src\inputs.c.obj -c C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\inputs.c
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.dir/Src/inputs.c.obj -MF CMakeFiles\Project.dir\Src\inputs.c.obj.d -o CMakeFiles\Project.dir\Src\inputs.c.obj -c C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\inputs.c
 
 CMakeFiles/Project.dir/Src/inputs.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Project.dir/Src/inputs.c.i"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\inputs.c > CMakeFiles\Project.dir\Src\inputs.c.i
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\inputs.c > CMakeFiles\Project.dir\Src\inputs.c.i
 
 CMakeFiles/Project.dir/Src/inputs.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Project.dir/Src/inputs.c.s"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\inputs.c -o CMakeFiles\Project.dir\Src\inputs.c.s
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\inputs.c -o CMakeFiles\Project.dir\Src\inputs.c.s
 
 CMakeFiles/Project.dir/Src/main.c.obj: CMakeFiles/Project.dir/flags.make
 CMakeFiles/Project.dir/Src/main.c.obj: CMakeFiles/Project.dir/includes_C.rsp
 CMakeFiles/Project.dir/Src/main.c.obj: C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/main.c
 CMakeFiles/Project.dir/Src/main.c.obj: CMakeFiles/Project.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Project.dir/Src/main.c.obj"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.dir/Src/main.c.obj -MF CMakeFiles\Project.dir\Src\main.c.obj.d -o CMakeFiles\Project.dir\Src\main.c.obj -c C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\main.c
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.dir/Src/main.c.obj -MF CMakeFiles\Project.dir\Src\main.c.obj.d -o CMakeFiles\Project.dir\Src\main.c.obj -c C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\main.c
 
 CMakeFiles/Project.dir/Src/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Project.dir/Src/main.c.i"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\main.c > CMakeFiles\Project.dir\Src\main.c.i
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\main.c > CMakeFiles\Project.dir\Src\main.c.i
 
 CMakeFiles/Project.dir/Src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Project.dir/Src/main.c.s"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\main.c -o CMakeFiles\Project.dir\Src\main.c.s
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\main.c -o CMakeFiles\Project.dir\Src\main.c.s
 
 CMakeFiles/Project.dir/Src/puzzle.c.obj: CMakeFiles/Project.dir/flags.make
 CMakeFiles/Project.dir/Src/puzzle.c.obj: CMakeFiles/Project.dir/includes_C.rsp
 CMakeFiles/Project.dir/Src/puzzle.c.obj: C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/puzzle.c
 CMakeFiles/Project.dir/Src/puzzle.c.obj: CMakeFiles/Project.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Project.dir/Src/puzzle.c.obj"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.dir/Src/puzzle.c.obj -MF CMakeFiles\Project.dir\Src\puzzle.c.obj.d -o CMakeFiles\Project.dir\Src\puzzle.c.obj -c C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\puzzle.c
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.dir/Src/puzzle.c.obj -MF CMakeFiles\Project.dir\Src\puzzle.c.obj.d -o CMakeFiles\Project.dir\Src\puzzle.c.obj -c C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\puzzle.c
 
 CMakeFiles/Project.dir/Src/puzzle.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Project.dir/Src/puzzle.c.i"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\puzzle.c > CMakeFiles\Project.dir\Src\puzzle.c.i
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\puzzle.c > CMakeFiles\Project.dir\Src\puzzle.c.i
 
 CMakeFiles/Project.dir/Src/puzzle.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Project.dir/Src/puzzle.c.s"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\puzzle.c -o CMakeFiles\Project.dir\Src\puzzle.c.s
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\puzzle.c -o CMakeFiles\Project.dir\Src\puzzle.c.s
 
 CMakeFiles/Project.dir/Src/screen.c.obj: CMakeFiles/Project.dir/flags.make
 CMakeFiles/Project.dir/Src/screen.c.obj: CMakeFiles/Project.dir/includes_C.rsp
 CMakeFiles/Project.dir/Src/screen.c.obj: C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/Project/Src/screen.c
 CMakeFiles/Project.dir/Src/screen.c.obj: CMakeFiles/Project.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Project.dir/Src/screen.c.obj"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.dir/Src/screen.c.obj -MF CMakeFiles\Project.dir\Src\screen.c.obj.d -o CMakeFiles\Project.dir\Src\screen.c.obj -c C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\screen.c
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Project.dir/Src/screen.c.obj -MF CMakeFiles\Project.dir\Src\screen.c.obj.d -o CMakeFiles\Project.dir\Src\screen.c.obj -c C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\screen.c
 
 CMakeFiles/Project.dir/Src/screen.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Project.dir/Src/screen.c.i"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\screen.c > CMakeFiles\Project.dir\Src\screen.c.i
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\screen.c > CMakeFiles\Project.dir\Src\screen.c.i
 
 CMakeFiles/Project.dir/Src/screen.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Project.dir/Src/screen.c.s"
-	C:\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\screen.c -o CMakeFiles\Project.dir\Src\screen.c.s
+	D:\Programes\msys64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\raffi\Documents\GitHub\Alkindi-concours-qualification_exercice-n1\Project\Src\screen.c -o CMakeFiles\Project.dir\Src\screen.c.s
 
 # Object files for target Project
 Project_OBJECTS = \

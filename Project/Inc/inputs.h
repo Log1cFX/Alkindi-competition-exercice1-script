@@ -1,3 +1,6 @@
+#ifndef INPUTS
+#define INPUTS
+
 #include <stdbool.h>
 #include <windows.h>
 
@@ -18,3 +21,5 @@ int inputs_startListening(HInputs *hInputs);
 void inputs_stopListening(HInputs * hInputs);
 
 void inputs_poll(HInputs * hInputs);
+
+#endif

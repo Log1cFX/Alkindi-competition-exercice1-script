@@ -29,7 +29,7 @@ static int isBlack(COLORREF color)
 uint8_t *screen_capturePixels(POINT positions[16])
 {
     HDC hdcScreen = GetDC(NULL);
-    uint8_t *returnValue = malloc(2 * sizeof(uint8_t));
+    uint8_t *returnValue = calloc(1,2 * sizeof(uint8_t));
     for (int i = 0; i < 2; i++)
     {
         for (int j = 0; j < 8; j++)
@@ -50,4 +50,10 @@ void screen_test(POINT positions[18])
         printf("%d", isBlack(getPixelColor(&hdcScreen, &positions[i])));
         ReleaseDC(NULL, hdcScreen);
     }
+    printf("\n");
+    POINT bitPixels[16];
+    memcpy(bitPixels, &positions[2], 16 * sizeof(POINT));
+    uint8_t bytes[2] = {0};
+    memcpy(bytes, screen_capturePixels(bitPixels), 2 * sizeof(uint8_t));
+    printf("byte number %d: (" BYTE_TO_BINARY_PATTERN "," BYTE_TO_BINARY_PATTERN ")\n", 1, BYTE_TO_BINARY(bytes[0]), BYTE_TO_BINARY(bytes[1]));
 }

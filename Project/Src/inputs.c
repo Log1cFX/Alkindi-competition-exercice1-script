@@ -30,7 +30,7 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
             // printf("Down Arrow Pressed\n");
             cursor_moveDown();
             break;
-        case 'N' :
+        case 'N':
             // cursor_leftDown();
             break;
         case 'F':
@@ -46,6 +46,16 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
                 }
             }
             break;
+        case 'G':
+            for (int i = 0; i < 5; i++)
+            {
+                HInputs *handle = hInputsList[i];
+                if (handle != NULL)
+                {
+                    handle->customFunction();
+                }
+            }
+            break;
         case VK_ESCAPE: // Exit program when ESC is pressed
             printf("Exiting the program\n");
             exit(0);
@@ -55,7 +65,7 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
     // return CallNextHookEx(NULL, nCode, wParam, lParam);
 }
 
-int inputs_INIT(HInputs *hInputs, int (*stopFunction)(HInputs*, POINT*), POINT *(*customParamFunction)(void))
+int inputs_INIT(HInputs *hInputs, int (*stopFunction)(HInputs *, POINT *), POINT *(*customParamFunction)(void))
 {
     // Set the functions that will be executed with a keyPress, if stopFunction returns 1 the thread will stop listening
     hInputs->stopFunction = stopFunction;

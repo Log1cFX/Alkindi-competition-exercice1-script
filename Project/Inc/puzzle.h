@@ -10,4 +10,8 @@ void puzzle_analyseImage(POINT positions[]);
 
 void puzzle_printImages();
 
+void puzzle_calculateChances();
+
+void puzzle_printProbabilites();
+
 #endif

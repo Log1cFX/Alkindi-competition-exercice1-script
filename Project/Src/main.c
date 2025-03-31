@@ -9,7 +9,7 @@
 POINT positions[maxPosNumber] = {0};
 POINT x = {0};
 
-int stopFunction(HInputs *HInputs, POINT *pos)
+static int stopFunction(HInputs *HInputs, POINT *pos)
 {
     for (int i = 0; i < maxPosNumber; i++)
     {

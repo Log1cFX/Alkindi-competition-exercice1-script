@@ -10,6 +10,7 @@ typedef struct HInputs
     MSG msg;
     int (*stopFunction)(struct HInputs*, POINT*);
     POINT *(*customParamFunction)(void);
+    void (*customFunction)(void);
     bool isListening;
     bool error;
 } HInputs;

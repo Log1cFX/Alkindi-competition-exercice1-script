@@ -30,6 +30,14 @@ static int stopFunction(HInputs *HInputs, POINT *pos)
 
 int main()
 {
+    // printf(BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(0xE1));
+    // int perm[8] = {2,3,4,8,5,7,1,6};
+    // for (int i = 0; i < 8; i++)
+    // {
+    //     printf("%d ", perm[i]+1);
+    // }
+    // printf("\n");
+    // printf(BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(apply_permutation(0x7F, perm)));
     HInputs hInputs = {0};
     inputs_INIT(&hInputs, stopFunction, cursor_getPos);
     inputs_startListening(&hInputs);

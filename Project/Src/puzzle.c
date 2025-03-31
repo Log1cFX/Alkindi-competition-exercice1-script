@@ -5,7 +5,7 @@
 #include "screen.h"
 
 static uint8_t originalImage[40000] = {0};
-static uint8_t currentImage[40000] = {0};
+static uint8_t scrambledImage[40000] = {0};
 static int index = 0;
 static POINT bitPixels[16] = {0};
 static HInputs *hInputs;
@@ -26,7 +26,7 @@ static int errorChecking(POINT pos)
 
 static void processPixel(POINT pos)
 {
-    Sleep(100);
+    Sleep(200);
     errorChecking(pos);
     uint8_t bytes[2] = {0};
     uint8_t *temp = screen_capturePixels(bitPixels);
@@ -36,7 +36,7 @@ static void processPixel(POINT pos)
     {
         return;
     }
-    currentImage[index] = bytes[0];
+    scrambledImage[index] = bytes[0];
     originalImage[index] = bytes[1];
     index++;
 }
@@ -48,8 +48,19 @@ void puzzle_start(HInputs *inputsHandle, POINT positions[18])
     memcpy(bitPixels, &positions[2], 16 * sizeof(POINT));
     puzzle_analyseImage(positions);
     puzzle_printImages();
-    puzzle_calculateChances();
-    puzzle_printProbabilites();
+
+    int perm[8] = {0, 1, 2, 3, 4, 5, 6, 7};
+    do {
+        if (check_permutation(perm, originalImage, scrambledImage, index)) {
+            printf("Found matching permutation:\n");
+            for (int i = 0; i < 8; ++i) {
+                printf("%d ", perm[i]+1);
+            }
+            printf("\n");
+            break;
+        }
+    } while (next_permutation(perm, 8));
+    printf("didn't find any permutation\n");
 }
 
 void puzzle_analyseImage(POINT positions[])
@@ -102,58 +113,42 @@ void puzzle_printImages()
 {
     for (int i = 0; i < 20; i++)
     {
-        printf("byte number %d: (" BYTE_TO_BINARY_PATTERN "," BYTE_TO_BINARY_PATTERN ")\n", i, BYTE_TO_BINARY(currentImage[i]), BYTE_TO_BINARY(originalImage[i]));
+        printf("byte number %d: (" BYTE_TO_BINARY_PATTERN "," BYTE_TO_BINARY_PATTERN ")\n", i, BYTE_TO_BINARY(scrambledImage[i]), BYTE_TO_BINARY(originalImage[i]));
     }
 }
 
-static inline int count_ones(uint8_t x)
-{
-    return __builtin_popcount(x);
+uint8_t apply_permutation(uint8_t byte, int perm[8]) {
+    uint8_t result = 0;
+    for (int i = 0; i < 8; ++i) {
+        int from_bit = perm[i]; // where the i-th bit came from
+        uint8_t bit = (byte >> from_bit) & 1;
+        result |= (bit << i);
+    }
+    return result;
 }
 
-void puzzle_calculateChances()
-{
-    // iterates through all the pixels
-    for (int pixelNum = 0; pixelNum < index; pixelNum++)
-    {
-        double weight = 0;
-        int ones = count_ones(originalImage[pixelNum]);
-        // avoid divisions by 0
-        if (ones != 0)
-        {
-            weight = 100 / (double)ones;
-        }
+// Generate the next permutation (lexicographic order)
+int next_permutation(int *a, int n) {
+    int i = n - 2;
+    while (i >= 0 && a[i] > a[i + 1]) i--;
+    if (i < 0) return 0;
 
-        // shifts bits of the currentImage one by one until finds a one
-        for (int currentImageBitShift = 0; currentImageBitShift < 8; currentImageBitShift++)
-        {
-            // if finds a one
-            if ((currentImage[pixelNum] >> currentImageBitShift) & 0X01)
-            {
-                // shifts bits of the originalImage one by one until finds a one
-                for (int originalImageBitShift = 0; originalImageBitShift < 8; originalImageBitShift++)
-                {
-                    // if finds a one
-                    if ((originalImage[pixelNum] >> originalImageBitShift) & 0x01)
-                    {
-                        // adds the weithed probablility of the real currentImages's bit
-                        // number [currentImageBitShift] position being [originalImageBitShift]
-                        bitPosProbability[currentImageBitShift][originalImageBitShift] += weight;
-                    }
-                }
-            }
-        }
+    int j = n - 1;
+    while (a[j] < a[i]) j--;
+    int tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+
+    for (int k = i + 1, l = n - 1; k < l; k++, l--) {
+        tmp = a[k]; a[k] = a[l]; a[l] = tmp;
     }
+    return 1;
 }
 
-void puzzle_printProbabilites()
-{
-    for (int i = 0; i < 8; i++)
-    {
-        printf("for the bit %d of the current Image :\n", i + 1);
-        for (int j = 0; j < 8; j++)
-        {
-            printf("- %d : %f\n", j + 1, bitPosProbability[i][j]);
+// Check if a permutation restores original from scrambled
+int check_permutation(int perm[8], uint8_t *original, uint8_t *scrambled, int size) {
+    for (int i = 0; i < size; ++i) {
+        if (original[i] != apply_permutation(scrambled[i], perm)) {
+            return 0;
         }
     }
+    return 1;
 }

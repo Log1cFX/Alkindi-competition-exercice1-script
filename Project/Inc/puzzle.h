@@ -10,8 +10,10 @@ void puzzle_analyseImage(POINT positions[]);
 
 void puzzle_printImages();
 
-void puzzle_calculateChances();
+uint8_t apply_permutation(uint8_t byte, int perm[8]);
 
-void puzzle_printProbabilites();
+int next_permutation(int *a, int n);
+
+int check_permutation(int perm[8], uint8_t *original, uint8_t *scrambled, int size);
 
 #endif

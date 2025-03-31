@@ -129,7 +129,7 @@ uint8_t apply_permutation(uint8_t byte, int perm[8]) {
 
 // Generate the next permutation (lexicographic order)
 int next_permutation(int *a, int n) {
-    int i = n - 2;
+    int i = n - 2;h
     while (i >= 0 && a[i] > a[i + 1]) i--;
     if (i < 0) return 0;
 

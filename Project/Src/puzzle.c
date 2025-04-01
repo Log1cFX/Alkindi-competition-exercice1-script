@@ -7,6 +7,8 @@
 static uint8_t originalImage[2][MAX_BYTES] = {0};  // [0][x] = even line, [1][x] = odd line
 static uint8_t scrambledImage[2][MAX_BYTES] = {0}; // [0][x] = even line, [1][x] = odd line
 static int pixelCount = 0;
+static int evenPixelCount = 0;
+static int oddPixelCount = 0;
 static HInputs *hInputs;
 static int skip = 0;
 
@@ -26,10 +28,16 @@ static void initErrorCheck(ImageAnalyser *image)
         printf("- exiting program\n");
         exit(1);
     }
-    int areaSize = (image->imageEnd.x - image->imageStart.x) * (image->imageEnd.y - image->imageStart.y);
+    int Xdif = image->imageEnd.x - image->imageStart.x;
+    int Ydif = image->imageEnd.y - image->imageStart.y;
+    int areaSize = Ydif * Xdif;
     if (areaSize == 0)
     {
-        areaSize = image->imageEnd.x - image->imageStart.x;
+        areaSize = Xdif;
+    }
+    else
+    {
+        areaSize += Xdif + Ydif;
     }
     image->areaSize = areaSize;
     if (image->areaSize >= 1899)
@@ -61,22 +69,12 @@ void puzzle_start(HInputs *inputsHandle, POINT positions[18])
 
     puzzle_analyseImage(&image);
     puzzle_printImages();
-    int perm[8] = {0, 1, 2, 3, 4, 5, 6, 7};
-    puzzle_getPermutaion();
-    // do
-    // {
-    //     if (check_permutation(perm, originalImage[][], scrambledImage[][], pixelCount))
-    //     {
-    //         printf("Found matching permutation:\n");
-    //         for (int i = 0; i < 8; ++i)
-    //         {
-    //             printf("%d ", perm[i] + 1);
-    //         }
-    //         printf("\n");
-    //         break;
-    //     }
-    // } while (next_permutation(perm, 8));
-    // printf("didn't find any permutation\n");
+    int permEven[8] = {0, 1, 2, 3, 4, 5, 6, 7};
+    int permOdd[8] = {0, 1, 2, 3, 4, 5, 6, 7};
+    for (int odd = 0; odd < 2; odd++)
+    {
+        puzzle_getPermutaion((odd)? permOdd : permEven, odd);
+    }
 }
 
 // Initialization functions END //
@@ -112,10 +110,18 @@ static void processPixel(ImageAnalyser *image)
     {
         uint8_t bytes[2] = {0};
         screen_capturePixels(bytes, image->bitsPositions);
-        int oddEven = image->currentAnalyserPos.y % 2;
-        scrambledImage[oddEven][pixelCount] = bytes[0];
-        originalImage[oddEven][pixelCount] = bytes[1];
+        int odd = image->currentAnalyserPos.y % 2;
+        scrambledImage[odd][pixelCount] = bytes[0];
+        originalImage[odd][pixelCount] = bytes[1];
         pixelCount++;
+        if (odd)
+        {
+            oddPixelCount++;
+        }
+        else
+        {
+            evenPixelCount++;
+        }
     }
 }
 
@@ -218,11 +224,20 @@ static int next_permutation(int *a, int n)
 }
 
 // Check if a permutation restores original from scrambled
-static int check_permutation(int perm[8], uint8_t *original, uint8_t *scrambled, int size)
+static int check_permutation(int perm[8], uint8_t original[2][MAX_BYTES], uint8_t scrambled[2][MAX_BYTES], int odd)
 {
+    int size;
+    if (odd)
+    {
+        size = oddPixelCount;
+    }
+    else
+    {
+        size = evenPixelCount;
+    }
     for (int i = 0; i < size; ++i)
     {
-        if (original[i] != apply_permutation(scrambled[i], perm))
+        if (original[odd][i] != apply_permutation(scrambled[odd][i], perm))
         {
             return 0;
         }
@@ -230,7 +245,19 @@ static int check_permutation(int perm[8], uint8_t *original, uint8_t *scrambled,
     return 1;
 }
 
-puzzle_getPermutaion()
+void puzzle_getPermutaion(int perm[8], int odd)
 {
-    
+    while (next_permutation(perm, 8))
+    {
+        if (check_permutation(perm, originalImage, scrambledImage, odd))
+        {
+            printf("Found matching permutation:\n");
+            for (int i = 0; i < 8; ++i)
+            {
+                printf("%d ", perm[i] + 1);
+            }
+            printf("\n");
+            break;
+        }
+    }
 }

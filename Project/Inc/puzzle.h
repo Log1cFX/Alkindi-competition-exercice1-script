@@ -21,10 +21,6 @@ void puzzle_analyseImage(ImageAnalyser *image);
 
 void puzzle_printImages();
 
-uint8_t apply_permutation(uint8_t byte, int perm[8]);
-
-int next_permutation(int *a, int n);
-
-int check_permutation(int perm[8], uint8_t *original, uint8_t *scrambled, int size);
+void puzzle_getPermutaion(int perm[8], int odd);
 
 #endif

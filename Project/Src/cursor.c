@@ -72,6 +72,7 @@ POINT cursor_getPos()
     POINT *temp = malloc(sizeof(POINT));
     GetCursorPos(temp);
     POINT pos = *temp;
+    pos.x++;
     free(temp);
     return pos;
 }

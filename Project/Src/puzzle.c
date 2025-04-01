@@ -6,7 +6,7 @@
 
 static uint8_t originalImage[2][MAX_BYTES] = {0};  // [0][x] = even line, [1][x] = odd line
 static uint8_t scrambledImage[2][MAX_BYTES] = {0}; // [0][x] = even line, [1][x] = odd line
-static int pixelCount = 0;
+static int pixelCount = 0; // total number of analyzed pixels
 static int evenPixelCount = 0;
 static int oddPixelCount = 0;
 static HInputs *hInputs;
@@ -39,6 +39,7 @@ static void initErrorCheck(ImageAnalyser *image)
     {
         areaSize += Xdif + Ydif;
     }
+    areaSize++;
     image->areaSize = areaSize;
     if (image->areaSize >= 1899)
     {
@@ -63,12 +64,10 @@ void puzzle_start(HInputs *inputsHandle, POINT positions[18])
     // The rectangle is defined by positions[0] (top-left) and positions[1] (bottom-right)
     image.imageStart = positions[0];
     image.imageEnd = positions[1];
-    image.imageStart.x++;
-    image.imageEnd.x++;
     initErrorCheck(&image);
 
     puzzle_analyseImage(&image);
-    puzzle_printImages();
+    // puzzle_printImages();
     int permEven[8] = {0, 1, 2, 3, 4, 5, 6, 7};
     int permOdd[8] = {0, 1, 2, 3, 4, 5, 6, 7};
     for (int odd = 0; odd < 2; odd++)
@@ -91,19 +90,22 @@ static int errorChecking(ImageAnalyser *image)
         printf("- skipping the pixel adding process\n");
         return 1;
     }
-
-    // POINT a = image->imageStart;
-    // POINT b = image->imageEnd;
-    // POINT c = cursor_getPos();
-    // if (c.x < a.x || c.x > b.x || c.y < a.y || c.y > b.y)
-    // {
-    //     printf("FATAL ERROR : the cursor (%d, %d) is outside the bounds of the marked area\n", c.x, c.y);
-    //     printf("- exiting program\n");
-    //     exit(1);
-    // }
+    POINT a = image->currentAnalyserPos;
+    POINT b = cursor_getPos();
+    if (!(a.x == b.x && a.y == b.y))
+    {
+        printf("not fatal error found : unexpected cursor position at (%d,%d) instead of (%d,%d)\n", b.x, b.y, a.x, a.y);
+        while (a.x != b.x && a.y != b.y)
+        {
+            printf("- cursor's position set at (%d,%d)\n", a.x, a.y);
+            cursor_setPos(a);
+            b = cursor_getPos();
+        }
+        printf("- skipping the pixel adding process\n");
+        return 1;
+    }
     return 0;
 }
-
 static void processPixel(ImageAnalyser *image)
 {
     Sleep(200);
@@ -111,6 +113,7 @@ static void processPixel(ImageAnalyser *image)
     {
         uint8_t bytes[2] = {0};
         screen_capturePixels(bytes, image->bitsPositions);
+        printf("byte number %d: (" BYTE_TO_BINARY_PATTERN "," BYTE_TO_BINARY_PATTERN ")\n", pixelCount, BYTE_TO_BINARY(bytes[0]), BYTE_TO_BINARY(bytes[1]));
         int odd = image->currentAnalyserPos.y % 2;
         scrambledImage[odd][pixelCount] = bytes[0];
         originalImage[odd][pixelCount] = bytes[1];
@@ -139,44 +142,19 @@ void puzzle_analyseImage(ImageAnalyser *image)
     for (int y = imageStart.y; y <= imageEnd.y; y++)
     {
         image->currentAnalyserPos.y = y;
-        if ((y - imageStart.y) % 2 == 0)
+        for (int x = imageStart.x; x <= imageEnd.x; x++)
         {
-            for (int x = imageStart.x; x < imageEnd.x; x++)
-            {
-                image->currentAnalyserPos.x = x;
-                processPixel(image);
-                if (skip)
-                {
-                    return;
-                }
-                cursor_moveRight();
-            }
-        }
-        else
-        {
-            for (int x = imageEnd.x; x > imageStart.x; x--)
-            {
-                image->currentAnalyserPos.x = x;
-                processPixel(image);
-                if (skip)
-                {
-                    return;
-                }
-                cursor_moveLeft();
-            }
-        }
-
-        // After finishing a row, if there is another row below, move the cursor down one pixel.
-        if (y <= imageEnd.y)
-        {
+            image->currentAnalyserPos.x = x;
+            cursor_setPos(image->currentAnalyserPos);
             processPixel(image);
-            cursor_moveDown();
+            if (skip)
+            {
+                return;
+            }
         }
     }
     cursor_leftUp();
 }
-
-// puzzle_analyseImage functions END //
 
 void puzzle_printImages()
 {
@@ -186,6 +164,10 @@ void puzzle_printImages()
                i, BYTE_TO_BINARY(scrambledImage[0][i]), BYTE_TO_BINARY(originalImage[0][i]));
     }
 }
+
+// puzzle_analyseImage functions END //
+
+// permutations START //
 
 static uint8_t apply_permutation(uint8_t byte, int perm[8])
 {
@@ -252,7 +234,7 @@ void puzzle_getPermutaion(int perm[8], int odd)
     {
         if (check_permutation(perm, originalImage, scrambledImage, odd))
         {
-            printf("Found matching permutation:\n");
+            printf("Found matching permutation\n");
             break;
         }
     }
@@ -262,17 +244,21 @@ void puzzle_printPermutations(int permA[8], int permB[8])
 {
     for (int odd = 0; odd < 2; odd++)
     {
-        int var[8] = (odd) ? permB : permA;
+        int *var = (odd) ? permB : permA;
+        printf("Pixel chiffre : ");
         for (int i = 7; i >= 0; i--)
         {
-            printf("%d ", var[i]);
+            printf("%d ", var[i] + 1);
         }
         printf("\n");
+        printf("Resultat      : ");
         for (int i = 7; i >= 0; i--)
         {
-            printf("%d ", i);
+            printf("%d ", i + 1);
         }
         printf("\n");
         printf("\n");
     }
 }
+
+// permutations END //

@@ -18,6 +18,6 @@ void cursor_leftDown();
 
 void cursor_leftUp();
 
-POINT *cursor_getPos();
+POINT cursor_getPos();
 
 #endif

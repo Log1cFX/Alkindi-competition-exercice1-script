@@ -14,7 +14,7 @@
 
 #include <windows.h>
 
-uint8_t *screen_capturePixels(POINT positions[16]);
+void screen_capturePixels(uint8_t bytes[2], POINT bitsPositions[16]);
 
 void screen_test(POINT positions[18]);
 

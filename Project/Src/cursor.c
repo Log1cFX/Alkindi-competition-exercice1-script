@@ -67,9 +67,11 @@ void cursor_leftUp()
     }
 }
 
-POINT *cursor_getPos()
+POINT cursor_getPos()
 {
-    POINT *pos = malloc(sizeof(POINT));
-    GetCursorPos(pos);
+    POINT *temp = malloc(sizeof(POINT));
+    GetCursorPos(temp);
+    POINT pos = *temp;
+    free(temp);
     return pos;
 }

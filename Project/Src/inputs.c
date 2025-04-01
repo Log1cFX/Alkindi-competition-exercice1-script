@@ -65,11 +65,8 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
     // return CallNextHookEx(NULL, nCode, wParam, lParam);
 }
 
-int inputs_INIT(HInputs *hInputs, int (*stopFunction)(HInputs *, POINT *), POINT *(*customParamFunction)(void))
+int inputs_INIT(HInputs *hInputs)
 {
-    // Set the functions that will be executed with a keyPress, if stopFunction returns 1 the thread will stop listening
-    hInputs->stopFunction = stopFunction;
-    hInputs->customParamFunction = customParamFunction;
     // Put it in a list a static list
     for (int i = 0; i < 5; i++)
     {

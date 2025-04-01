@@ -4,9 +4,20 @@
 #include <windows.h>
 #include "inputs.h"
 
-void puzzle_start(HInputs *inputsHandle, POINT positions[]);
+#define MAX_BYTES 1000
 
-void puzzle_analyseImage(POINT positions[]);
+typedef struct
+{
+    POINT bitsPositions[16];
+    POINT imageStart;
+    POINT imageEnd;
+    POINT currentAnalyserPos;
+    int areaSize;
+} ImageAnalyser;
+
+void puzzle_start(HInputs *inputsHandle, POINT positions[18]);
+
+void puzzle_analyseImage(ImageAnalyser *image);
 
 void puzzle_printImages();
 

@@ -9,15 +9,14 @@
 POINT positions[maxPosNumber] = {0};
 POINT x = {0};
 
-static int stopFunction(HInputs *HInputs, POINT *pos)
+static int stopFunction(HInputs *HInputs, POINT pos)
 {
     for (int i = 0; i < maxPosNumber; i++)
     {
         if (positions[i].x == 0 && positions[i].y == 0)
         {
-            positions[i] = *pos;
-            printf("new pos added (%d,%d) %d out of %d\n", pos->x, pos->y, i + 1, maxPosNumber);
-            free(pos);
+            positions[i] = pos;
+            printf("new pos added (%d,%d) %d out of %d\n", pos.x, pos.y, i + 1, maxPosNumber);
             if (i + 1 == maxPosNumber)
             {
                 return 1;
@@ -39,9 +38,10 @@ int main()
     // printf("\n");
     // printf(BYTE_TO_BINARY_PATTERN "\n", BYTE_TO_BINARY(apply_permutation(0x7F, perm)));
     HInputs hInputs = {0};
-    inputs_INIT(&hInputs, stopFunction, cursor_getPos);
+    hInputs.stopFunction = stopFunction;
+    hInputs.customParamFunction = cursor_getPos;
+    inputs_INIT(&hInputs);
     inputs_startListening(&hInputs);
-    Sleep(2000);
     // screen_test(positions);
     puzzle_start(&hInputs, positions);
 }

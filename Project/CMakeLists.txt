@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.0)
-project(Project LANGUAGES C)
+project(Project C)
 
 file(GLOB SOURCES "${Project_SOURCE_DIR}/Src/*.c")
 

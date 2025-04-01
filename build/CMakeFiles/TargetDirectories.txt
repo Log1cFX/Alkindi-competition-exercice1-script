@@ -1,3 +1,0 @@
-C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/build/CMakeFiles/Project.dir
-C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/build/CMakeFiles/edit_cache.dir
-C:/Users/raffi/Documents/GitHub/Alkindi-concours-qualification_exercice-n1/build/CMakeFiles/rebuild_cache.dir

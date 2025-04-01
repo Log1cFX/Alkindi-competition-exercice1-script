@@ -1,6 +1,7 @@
 Voici une vidéo qui montre son fonctionnement :
 https://youtu.be/k63d3Ic_5-s?si=2hljpnguKKNbLisi
 Attention, ce script se lancera que sur Windows et son fonctionnment correcte n'est pas garanti sur tout les ordinateurs
+
 Instructions pour l'utiliser :
 1. Accéder au concours.
 2. Aller sur les permutations et remettre tout par défault

@@ -23,4 +23,6 @@ void puzzle_printImages();
 
 void puzzle_getPermutaion(int perm[8], int odd);
 
+void puzzle_printPermutations(int permA[8], int permB[8]);
+
 #endif

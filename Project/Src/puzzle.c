@@ -73,8 +73,9 @@ void puzzle_start(HInputs *inputsHandle, POINT positions[18])
     int permOdd[8] = {0, 1, 2, 3, 4, 5, 6, 7};
     for (int odd = 0; odd < 2; odd++)
     {
-        puzzle_getPermutaion((odd)? permOdd : permEven, odd);
+        puzzle_getPermutaion((odd) ? permOdd : permEven, odd);
     }
+    puzzle_printPermutations(permEven, permOdd);
 }
 
 // Initialization functions END //
@@ -252,12 +253,26 @@ void puzzle_getPermutaion(int perm[8], int odd)
         if (check_permutation(perm, originalImage, scrambledImage, odd))
         {
             printf("Found matching permutation:\n");
-            for (int i = 0; i < 8; ++i)
-            {
-                printf("%d ", perm[i] + 1);
-            }
-            printf("\n");
             break;
         }
+    }
+}
+
+void puzzle_printPermutations(int permA[8], int permB[8])
+{
+    for (int odd = 0; odd < 2; odd++)
+    {
+        int var[8] = (odd) ? permB : permA;
+        for (int i = 7; i >= 0; i--)
+        {
+            printf("%d ", var[i]);
+        }
+        printf("\n");
+        for (int i = 7; i >= 0; i--)
+        {
+            printf("%d ", i);
+        }
+        printf("\n");
+        printf("\n");
     }
 }

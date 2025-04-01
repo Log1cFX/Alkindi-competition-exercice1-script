@@ -1,4 +1,4 @@
-Voici une vidéo qui montre son fonctionnement :
+Voici une vidéo qui montre le fonctionnement du script :
 https://youtu.be/k63d3Ic_5-s?si=2hljpnguKKNbLisi
 Attention, ce script se lancera que sur Windows et son fonctionnment correcte n'est pas garanti sur tout les ordinateurs
 

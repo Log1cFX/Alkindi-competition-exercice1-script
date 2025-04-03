@@ -25,33 +25,13 @@ static int isBlack(COLORREF color)
     return (brightness < 200.0);
 }
 
-
-void screen_capturePixels(uint8_t bytes[2], POINT bitsPositions[16])
+void screen_capturePixels(uint16_t *byte, POINT bitsPositions[9])
 {
     HDC hdcScreen = GetDC(NULL);
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < 9; i++)
     {
-        for (int j = 0; j < 8; j++)
-        {
-            int pixelColor = isBlack(getPixelColor(&hdcScreen, &bitsPositions[(8 * i) + j]));
-            bytes[i] = (bytes[i] | (pixelColor << j));
-        }
+        int pixelColor = isBlack(getPixelColor(&hdcScreen, &bitsPositions[i]));
+        *byte = (*byte | (pixelColor << i));
     }
     ReleaseDC(NULL, hdcScreen);
-}
-
-void screen_test(POINT positions[18])
-{
-    // for (int i = 2; i < 18; i++)
-    // {   
-    //     HDC hdcScreen = GetDC(NULL);
-    //     printf("%d", isBlack(getPixelColor(&hdcScreen, &positions[i])));
-    //     ReleaseDC(NULL, hdcScreen);
-    // }
-    // printf("\n");
-    // POINT bitPixels[16];
-    // memcpy(bitPixels, &positions[2], 16 * sizeof(POINT));
-    // uint8_t bytes[2] = {0};
-    // memcpy(bytes, screen_capturePixels(bitPixels), 2 * sizeof(uint8_t));
-    // printf("byte number %d: (" BYTE_TO_BINARY_PATTERN "," BYTE_TO_BINARY_PATTERN ")\n", 1, BYTE_TO_BINARY(bytes[0]), BYTE_TO_BINARY(bytes[1]));
 }

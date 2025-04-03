@@ -4,9 +4,9 @@
 #include "puzzle.h"
 #include "screen.h"
 
-static uint8_t originalImage[2][MAX_BYTES] = {0};  // [0][x] = even line, [1][x] = odd line
-static uint8_t scrambledImage[2][MAX_BYTES] = {0}; // [0][x] = even line, [1][x] = odd line
-static int pixelCount = 0; // total number of analyzed pixels
+static uint16_t originalImage[2][MAX_BYTES] = {0};  // [0][x] = even line, [1][x] = odd line
+static uint16_t scrambledImage[2][MAX_BYTES] = {0}; // [0][x] = even line, [1][x] = odd line
+static int pixelCount = 0;                          // total number of analyzed pixels
 static int evenPixelCount = 0;
 static int oddPixelCount = 0;
 static HInputs *hInputs;
@@ -41,15 +41,9 @@ static void initErrorCheck(ImageAnalyser *image)
     }
     areaSize++;
     image->areaSize = areaSize;
-    if (image->areaSize >= 1899)
-    {
-        printf("FATAL ERROR : the marked territory is too big\n");
-        printf("- exiting program\n");
-        exit(1);
-    }
 }
 
-void puzzle_start(HInputs *inputsHandle, POINT positions[18])
+void puzzle_start(HInputs *inputsHandle, POINT positions[22])
 {
     printf("\n");
     printf("SOLVING THE PUZZLE\n");
@@ -58,21 +52,64 @@ void puzzle_start(HInputs *inputsHandle, POINT positions[18])
 
     hInputs = inputsHandle;
     hInputs->customFunction = customFunction;
-    ImageAnalyser image = {0};
-    // the bits are selected by the user and inserted from positions[2] to positions[18]
-    memcpy(image.bitsPositions, &positions[2], 16 * sizeof(POINT));
-    // The rectangle is defined by positions[0] (top-left) and positions[1] (bottom-right)
-    image.imageStart = positions[0];
-    image.imageEnd = positions[1];
-    initErrorCheck(&image);
 
-    puzzle_analyseImage(&image);
-    // puzzle_printImages();
-    int permEven[8] = {0, 1, 2, 3, 4, 5, 6, 7};
-    int permOdd[8] = {0, 1, 2, 3, 4, 5, 6, 7};
+    ImageAnalyser sImage = {0};
+    sImage.imageStart = positions[0];
+    sImage.imageEnd = positions[1];
+    memcpy(sImage.bitsPositions, &positions[4], 9 * sizeof(POINT));
+    sImage.storedPixels = scrambledImage;
+
+    ImageAnalyser oImage = {0};
+    oImage.imageStart = positions[2];
+    oImage.imageEnd = positions[3];
+    memcpy(oImage.bitsPositions, &positions[13], 9 * sizeof(POINT));
+    oImage.storedPixels = originalImage;
+
+    initErrorCheck(&sImage);
+    initErrorCheck(&oImage);
+
+    for (int i = 0; i < 9; i++)
+    {
+        printf("(%d,%d)\n", sImage.bitsPositions[i].x, sImage.bitsPositions[i].y);
+    }
+    printf("\n");
+    for (int i = 0; i < 9; i++)
+    {
+        printf("(%d,%d)\n", oImage.bitsPositions[i].x, oImage.bitsPositions[i].y);
+    }
+    
+
+    POINT aa = sImage.imageStart;
+    POINT ab = sImage.imageEnd;
+    POINT ba = oImage.imageStart;
+    POINT bb = oImage.imageEnd;
+
+    if (!(ab.x - aa.x == bb.x - ba.x && ab.y - aa.y == bb.y - ba.y))
+    {
+        printf("FATAL ERROR : the areas don't have the same size\n");
+        printf("- exiting program\n");
+        exit(1);
+    }
+
+    printf("Analysing the scrambled Image\n");
+    puzzle_analyseImage(&sImage);
+    printf("Analysing the original Image\n");
+    puzzle_analyseImage(&oImage);
+
+    pixelCount = oImage.pixelCount;
+    oddPixelCount = oImage.oddPixelCount;
+    evenPixelCount = oImage.evenPixelCount;
+
+    printf("Printing from array (scrambled)\n");
+    puzzle_printImages(&sImage);
+    printf("Printing from array (original)\n");
+    puzzle_printImages(&oImage);
+
+    int permEven[9] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+    int permOdd[9] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
     for (int odd = 0; odd < 2; odd++)
     {
-        puzzle_getPermutaion((odd) ? permOdd : permEven, odd);
+        puzzle_getPermutation((odd) ? permOdd : permEven, odd);
     }
     puzzle_printPermutations(permEven, permOdd);
 }
@@ -84,12 +121,6 @@ void puzzle_start(HInputs *inputsHandle, POINT positions[18])
 static int errorChecking(ImageAnalyser *image)
 {
     inputs_poll(hInputs);
-    if (pixelCount >= image->areaSize)
-    {
-        printf("not fatal error found : pixelCount (%d) is bigger than the areaSize (%d)\n", pixelCount, image->areaSize);
-        printf("- skipping the pixel adding process\n");
-        return 1;
-    }
     POINT a = image->currentAnalyserPos;
     POINT b = cursor_getPos();
     if (!(a.x == b.x && a.y == b.y))
@@ -108,23 +139,22 @@ static int errorChecking(ImageAnalyser *image)
 }
 static void processPixel(ImageAnalyser *image)
 {
-    Sleep(200);
+    Sleep(100);
     if (!errorChecking(image))
     {
-        uint8_t bytes[2] = {0};
-        screen_capturePixels(bytes, image->bitsPositions);
-        printf("byte number %d: (" BYTE_TO_BINARY_PATTERN "," BYTE_TO_BINARY_PATTERN ")\n", pixelCount, BYTE_TO_BINARY(bytes[0]), BYTE_TO_BINARY(bytes[1]));
-        int odd = image->currentAnalyserPos.y % 2;
-        scrambledImage[odd][pixelCount] = bytes[0];
-        originalImage[odd][pixelCount] = bytes[1];
-        pixelCount++;
+        uint16_t byte = {0};
+        screen_capturePixels(&byte, image->bitsPositions);
+        printf("byte number %d: "BYTE_TO_BINARY_PATTERN"\n", image->pixelCount, BYTE_TO_BINARY(byte));
+        int odd = (image->currentAnalyserPos.y - image->imageStart.y) % 2;
+        image->storedPixels[odd][image->pixelCount] = byte;
+        image->pixelCount++;
         if (odd)
         {
-            oddPixelCount++;
+            image->oddPixelCount++;
         }
         else
         {
-            evenPixelCount++;
+            image->evenPixelCount++;
         }
     }
 }
@@ -156,12 +186,12 @@ void puzzle_analyseImage(ImageAnalyser *image)
     cursor_leftUp();
 }
 
-void puzzle_printImages()
+void puzzle_printImages(ImageAnalyser *image)
 {
-    for (int i = 0; i < 20; i++)
+    printf("%d\n", image->evenPixelCount);
+    for (int i = 0; i < image->evenPixelCount; i++)
     {
-        printf("byte number %d: (" BYTE_TO_BINARY_PATTERN "," BYTE_TO_BINARY_PATTERN ")\n",
-               i, BYTE_TO_BINARY(scrambledImage[0][i]), BYTE_TO_BINARY(originalImage[0][i]));
+        printf("byte number %d: " BYTE_TO_BINARY_PATTERN "\n" , i, BYTE_TO_BINARY(image->storedPixels[0][i]));
     }
 }
 
@@ -169,13 +199,13 @@ void puzzle_printImages()
 
 // permutations START //
 
-static uint8_t apply_permutation(uint8_t byte, int perm[8])
+static uint16_t apply_permutation(uint16_t byte, int perm[9])
 {
-    uint8_t result = 0;
-    for (int i = 0; i < 8; ++i)
+    uint16_t result = 0;
+    for (int i = 0; i < 9; ++i)
     {
         int from_bit = perm[i]; // where the i-th bit came from
-        uint8_t bit = (byte >> from_bit) & 1;
+        uint16_t bit = (byte >> from_bit) & 1;
         result |= (bit << i);
     }
     return result;
@@ -207,7 +237,7 @@ static int next_permutation(int *a, int n)
 }
 
 // Check if a permutation restores original from scrambled
-static int check_permutation(int perm[8], uint8_t original[2][MAX_BYTES], uint8_t scrambled[2][MAX_BYTES], int odd)
+static int check_permutation(int perm[9], uint16_t original[2][MAX_BYTES], uint16_t scrambled[2][MAX_BYTES], int odd)
 {
     int size;
     if (odd)
@@ -228,9 +258,9 @@ static int check_permutation(int perm[8], uint8_t original[2][MAX_BYTES], uint8_
     return 1;
 }
 
-void puzzle_getPermutaion(int perm[8], int odd)
+void puzzle_getPermutation(int perm[9], int odd)
 {
-    while (next_permutation(perm, 8))
+    while (next_permutation(perm, 9))
     {
         if (check_permutation(perm, originalImage, scrambledImage, odd))
         {
@@ -240,19 +270,19 @@ void puzzle_getPermutaion(int perm[8], int odd)
     }
 }
 
-void puzzle_printPermutations(int permA[8], int permB[8])
+void puzzle_printPermutations(int permA[9], int permB[9])
 {
     for (int odd = 0; odd < 2; odd++)
     {
         int *var = (odd) ? permB : permA;
         printf("Pixel chiffre : ");
-        for (int i = 7; i >= 0; i--)
+        for (int i = 8; i >= 0; i--)
         {
             printf("%d ", var[i] + 1);
         }
         printf("\n");
         printf("Resultat      : ");
-        for (int i = 7; i >= 0; i--)
+        for (int i = 8; i >= 0; i--)
         {
             printf("%d ", i + 1);
         }

@@ -146,7 +146,7 @@ static void processPixel(ImageAnalyser *image)
         screen_capturePixels(&byte, image->bitsPositions);
         printf("byte number %d: "BYTE_TO_BINARY_PATTERN"\n", image->pixelCount, BYTE_TO_BINARY(byte));
         int odd = (image->currentAnalyserPos.y - image->imageStart.y) % 2;
-        image->storedPixels[odd][image->pixelCount] = byte;
+        image->storedPixels[odd][(odd)? image->oddPixelCount : image->evenPixelCount] = byte;
         image->pixelCount++;
         if (odd)
         {
